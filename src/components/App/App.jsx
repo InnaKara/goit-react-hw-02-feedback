@@ -1,8 +1,9 @@
 import { Component } from 'react';
-import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Notification } from './Notification/Notification';
-import { Section } from './Section/Section';
-import { Statistics } from './Statistic/Statistics';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Notification } from '../Notification/Notification';
+import { Section } from '../Section/Section';
+import { Statistics } from '../Statistic/Statistics';
+import { Container } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -11,10 +12,16 @@ export class App extends Component {
     bad: 0,
   };
 
-  onLeaveFeedback = e => {
-    const btnName = e.target.innerText.toLowerCase();
+  // onLeaveFeedback = e => {
+  //   const btnName = e.target.innerText.toLowerCase();
+  //   this.setState(prevState => ({
+  //     [btnName]: prevState[btnName] + 1,
+  //   }));
+  // };
+
+  onLeaveFeedback = option => {
     this.setState(prevState => ({
-      [btnName]: prevState[btnName] + 1,
+      [option]: prevState[option] + 1,
     }));
   };
 
@@ -32,12 +39,13 @@ export class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
-    console.log(this.countTotalFeedback());
+    const keys = Object.keys(this.state);
+    // console.log(this.countTotalFeedback());
     return (
-      <div>
+      <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={keys}
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
@@ -54,7 +62,7 @@ export class App extends Component {
             <Notification message="There is no feedback" />
           )}
         </Section>
-      </div>
+      </Container>
     );
   }
 }

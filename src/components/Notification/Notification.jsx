@@ -1,5 +1,7 @@
+import { Info, WrapperMessage } from './Notification.styled';
+
 export const Notification = ({ message }) => (
-  <div>
-    <span>{message}</span>
-  </div>
+  <WrapperMessage>
+    <Info>{message}</Info>
+  </WrapperMessage>
 );

@@ -1,3 +1,5 @@
+import { Reviews, ReviewsEl } from './Statistics.styled';
+
 export const Statistics = ({
   good,
   neutral,
@@ -6,12 +8,12 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    <div>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total: {total}</p>
-      <p>Positive feedback: {positivePercentage}%</p>
-    </div>
+    <Reviews>
+      <ReviewsEl>Good: {good}</ReviewsEl>
+      <ReviewsEl>Neutral: {neutral}</ReviewsEl>
+      <ReviewsEl>Bad: {bad}</ReviewsEl>
+      <ReviewsEl>Total: {total}</ReviewsEl>
+      <ReviewsEl>Positive feedback: {positivePercentage}%</ReviewsEl>
+    </Reviews>
   );
 };
